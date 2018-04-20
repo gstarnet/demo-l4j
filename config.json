@@ -1,0 +1,22 @@
+{
+  "name": "candemo-l4j",
+  "version": "1.0.1",
+  "groupId": "com.fluidman",
+  "artifactId": "candemo-l4j",
+  "rootPackage": "com.fluidman.candemo",
+  "handlerPackage":"com.fluidman.candemo.handler",
+  "modelPackage":"com.fluidman.candemo.model",
+  "overwriteHandler": true,
+  "overwriteHandlerTest": true,
+  "overwriteModel": true,
+  "httpPort": 8080,
+  "enableHttp": true,
+  "httpsPort": 8443,
+  "enableHttps": false,
+  "enableHttp2": false,
+  "enableRegistry": false,
+  "supportDb": true,
+  "supportH2ForTest": true,
+  "supportClient": true,
+  "dockerOrganization": "fluidmanagment"
+}

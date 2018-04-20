@@ -1,0 +1,1 @@
+java -jar lib/codegen-cli.jar -f swagger -o candemo -m swagger.json -c config.json
