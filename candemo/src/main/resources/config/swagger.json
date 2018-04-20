@@ -1,0 +1,55 @@
+{"security": [
+    {
+      "BasicAuth": []
+    }
+  ],"basePath": "/WIDDS/v1","paths":{"/device-faults":{"get":{"summary": "Gets Dispanser Fault collection.","description": "Gets the collection of Dispanser Fault objects.\n  Permission level&#58; **All**\n","responses":{"401": {
+            "description": "Unauthorized. Provide username/password in the HTTP header."
+          },"200":{"schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DeviceFault"
+              }
+            },"description": "OK."}},"tags": [
+          "Device Fault"
+        ]}},"/commands/RESET":{"post":{"summary": "Start system reset.","description": "Start system reset. Successful response indicates that reset will start. There is no separate communication when system comes back online. <br>Permission level&#58; **All**\n","responses":{"401": {
+            "description": "Unauthorized. Provide username/password in the HTTP header."
+          },"200":{"description": "OK. Reset started (not completed)."}},"tags": [
+          "Commands"
+        ]}},"/health":{"get":{"responses":{"200":{"description":"successful operation"}},"parameters":[]}},"/fault-history":{"get":{"summary": "Gets all history codes.","description": "Gets the collection of Dispanser Fault codes.\n  Permission level&#58; **All**\n","responses":{"401": {
+            "description": "Unauthorized. Provide username/password in the HTTP header."
+          },"200":{"schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },"description": "OK."}},"tags": [
+          "Fault history"
+        ]}},"/fault-history/{limit}":{"get":{"summary": "Gets limited history codes.","description": "Gets history of Dispanser Fault codes specified by limit\n  Permission level&#58; **All**\n","responses":{"401": {
+            "description": "Unauthorized. Provide username/password in the HTTP header."
+          },"200":{"schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },"description": "OK"}},"parameters": [
+          {
+            "name": "limit",
+            "in": "path",
+            "description": "The maximum amount of records to return.",
+            "type": "integer",
+            "required": true
+          }
+        ],"tags": [
+          "Fault history"
+        ]}},"/server/info":{"get":{"security":[{null:["server.info.r"]}],"responses":{"200":{"description":"successful operation"}},"parameters":[]}}},"host": "localhost:8080","produces": [
+    "application/json"
+  ],"schemes": [
+    "https"
+  ],"definitions":{"DeviceFault":{"type": "object","properties":{"deviceId":{"type": "string"},"faults":{"type": "array","items":{"type": "string"}},"status":{"type": "string"}}}},"securityDefinitions":{"BasicAuth":{"type": "basic"}},"swagger": "2.0","info": {
+    "description": "Light 4J Can Demo Application",
+    "version": "1.0.0",
+    "title": "Can Demo",
+    "termsOfService": "http://fluidman.com/en/terms-and-conditions/"
+  },"consumes": [
+    "application/json"
+  ]}
