@@ -50,5 +50,10 @@ singletons:
       connectionTimeout: 2000
 
 
+- com.fluidman.candemo.DispenserMachineObserver: 
+  - com.fluidman.candemo.CanEventProcessor
+
+
+  
 
 

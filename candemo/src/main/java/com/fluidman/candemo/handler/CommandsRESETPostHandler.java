@@ -7,11 +7,19 @@ import io.undertow.util.HttpString;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fluidman.candemo.CanEventProcessor;
+import com.fluidman.candemo.DispenserMachineIface;
+import com.fluidman.candemo.DispenserMachineObserver;
+import com.networknt.service.SingletonServiceFactory;
+
 public class CommandsRESETPostHandler implements HttpHandler {
     @Override
     public void handleRequest(HttpServerExchange exchange) throws Exception {
         
-            exchange.endExchange();
+    	DispenserMachineObserver processor  = 
+    			(DispenserMachineObserver)SingletonServiceFactory.getBean(DispenserMachineObserver.class);
+    	processor.getDispenserMachineIface().resetAll();
+        exchange.endExchange();
         
     }
 }
