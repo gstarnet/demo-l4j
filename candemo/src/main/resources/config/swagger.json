@@ -45,11 +45,15 @@
           }
         ],"tags": [
           "Fault history"
-        ]}},"/server/info":{"get":{"security":[{null:["server.info.r"]}],"responses":{"200":{"description":"successful operation"}},"parameters":[]}}},"host": "localhost:8080","schemes": [
+        ]}},"/server/info":{"get":{"security":[{"demo_auth":["server.info.r"]}],"responses":{"200":{"description":"successful operation"}},"parameters":[]}}},"host": "localhost:8080","produces": [
+    "application/json"
+  ],"schemes": [
     "http"
-  ],"definitions":{"DeviceFault":{"type": "object","properties":{"deviceId":{"type": "string"},"faults":{"type": "array","items":{"type": "string"}},"status":{"type": "string"}}}},"securityDefinitions":{"demo_auth":{"type": "basic"}},"swagger": "2.0","info": {
+  ],"definitions":{"DeviceFault":{"type": "object","properties":{"deviceId":{"type": "string"},"faults":{"type": "array","items":{"type": "string"}},"status":{"type": "string"}}}},"securityDefinitions":{"demo_auth":{"scopes":{"read:demo": "read your demo","server.info.r":"read server info","write:demo": "write demo"},"type": "oauth2","authorizationUrl": "http://localhost/authorize","flow": "implicit"}},"swagger": "2.0","info": {
     "description": "Light 4J Can Demo Application",
     "version": "1.0.0",
     "title": "Can Demo",
     "termsOfService": "http://fluidman.com/en/terms-and-conditions/"
-  }}
+  },"consumes": [
+    "application/json"
+  ]}

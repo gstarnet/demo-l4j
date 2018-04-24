@@ -11,6 +11,12 @@
   "schemes": [
     "http"
   ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "paths": {
     "/device-faults": {
       "get": {
@@ -141,7 +147,13 @@
   },
   "securityDefinitions": {
     "demo_auth": {
-      "type": "basic"
+      "type": "oauth2",
+      "authorizationUrl": "http://localhost/authorize",
+      "flow": "implicit",
+      "scopes": {
+        "write:demo": "write demo",
+        "read:demo": "read your demo"
+      }
     }
   }
 }
