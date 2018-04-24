@@ -9,18 +9,7 @@
   "host": "localhost:8080",
   "basePath": "/WIDDS/v1",
   "schemes": [
-    "https"
-  ],
-  "security": [
-    {
-      "BasicAuth": []
-    }
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
+    "http"
   ],
   "paths": {
     "/device-faults": {
@@ -30,6 +19,9 @@
         ],
         "summary": "Gets Dispanser Fault collection.",
         "description": "Gets the collection of Dispanser Fault objects.\n  Permission level&#58; **All**\n",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "OK.",
@@ -53,6 +45,9 @@
         ],
         "summary": "Gets all history codes.",
         "description": "Gets the collection of Dispanser Fault codes.\n  Permission level&#58; **All**\n",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "OK.",
@@ -76,6 +71,9 @@
         ],
         "summary": "Gets limited history codes.",
         "description": "Gets history of Dispanser Fault codes specified by limit\n  Permission level&#58; **All**\n",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "limit",
@@ -108,6 +106,9 @@
         ],
         "summary": "Start system reset.",
         "description": "Start system reset. Successful response indicates that reset will start. There is no separate communication when system comes back online. <br>Permission level&#58; **All**\n",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "OK. Reset started (not completed)."
@@ -139,7 +140,7 @@
     }
   },
   "securityDefinitions": {
-    "BasicAuth": {
+    "demo_auth": {
       "type": "basic"
     }
   }

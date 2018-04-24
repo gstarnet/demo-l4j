@@ -1,30 +1,24 @@
-swagger: "2.0"
+swagger: '2.0'
 info:
-  description: "Light 4J Can Demo Application"
-  version: "1.0.0"
-  title: "Can Demo"
-  termsOfService: "http://fluidman.com/en/terms-and-conditions/"
-
-host: "localhost:8080"
+  description: Light 4J Can Demo Application
+  version: 1.0.0
+  title: Can Demo
+  termsOfService: 'http://fluidman.com/en/terms-and-conditions/'
+host: 'localhost:8080'
 basePath: /WIDDS/v1
 schemes:
-- https
-security:
-  - BasicAuth: []
-consumes:
-  - application/json
-produces:
-  - application/json
-
+  - http
 paths:
-  '/device-faults':
+  /device-faults:
     get:
       tags:
         - Device Fault
       summary: Gets Dispanser Fault collection.
-      description: >
+      description: |
         Gets the collection of Dispanser Fault objects.
           Permission level&#58; **All**
+      produces:
+        - application/json
       responses:
         '200':
           description: OK.
@@ -34,14 +28,16 @@ paths:
               $ref: '#/definitions/DeviceFault'
         '401':
           description: Unauthorized. Provide username/password in the HTTP header.
-  '/fault-history':
+  /fault-history:
     get:
       tags:
         - Fault history
       summary: Gets all history codes.
-      description: >
+      description: |
         Gets the collection of Dispanser Fault codes.
           Permission level&#58; **All**
+      produces:
+        - application/json
       responses:
         '200':
           description: OK.
@@ -56,14 +52,15 @@ paths:
       tags:
         - Fault history
       summary: Gets limited history codes.
-      description: >
+      description: |
         Gets history of Dispanser Fault codes specified by limit
           Permission level&#58; **All**
+      produces:
+        - application/json
       parameters:
         - name: limit
           in: path
-          description: >-
-            The maximum amount of records to return.
+          description: The maximum amount of records to return.
           type: integer
           required: true
       responses:
@@ -75,7 +72,7 @@ paths:
               type: string
         '401':
           description: Unauthorized. Provide username/password in the HTTP header.
-  '/commands/RESET':
+  /commands/RESET:
     post:
       tags:
         - Commands
@@ -84,12 +81,13 @@ paths:
         Start system reset. Successful response indicates that reset will start.
         There is no separate communication when system comes back online.
         <br>Permission level&#58; **All**
+      produces:
+        - application/json
       responses:
         '200':
           description: OK. Reset started (not completed).
         '401':
           description: Unauthorized. Provide username/password in the HTTP header.
-
 definitions:
   DeviceFault:
     type: object
@@ -100,9 +98,8 @@ definitions:
         type: string
       faults:
         type: array
-        items: 
+        items:
           type: string
-
 securityDefinitions:
-  BasicAuth:
+  demo_auth:
     type: basic
